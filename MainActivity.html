@@ -20,41 +20,41 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">Habit4u</span>
+                <span class="mdl-layout-title" id="masterTitle">Habit4u</span>
             </div>
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-                <a href="#ma-home" class="mdl-layout__tab is-active">Home</a>
-                <a href="#ma-add" class="mdl-layout__tab">Add</a>
-                <a href="#ma-stats" class="mdl-layout__tab">Stats</a>
-                <a href="#ma-custom" class="mdl-layout__tab">Custom</a>
+                <a onclick="habit4u.loadData('ma-home');" href="#ma-home" class="mdl-layout__tab is-active" id="ma-home-tab">Home</a>
+                <a onclick="habit4u.loadData('ma-add');" href="#ma-add" class="mdl-layout__tab" id="ma-add-tab">Add</a>
+                <a onclick="habit4u.loadData('ma-stats');" href="#ma-stats" class="mdl-layout__tab" id="ma-stats-tab">Stats</a>
+                <a onclick="habit4u.loadData('ma-custom');" href="#ma-custom" class="mdl-layout__tab" id="ma-custom-tab">Custom</a>
             </div>
         </header>
         <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Menü</span>
+            <span class="mdl-layout-title" id="menuTitle">Menü</span>
         </div>
         <main class="mdl-layout__content">
             <center>
                 <section class="mdl-layout__tab-panel is-active" id="ma-home">
                     <div class="page-content">
-                        <h4>ma-home</h4>
+                        <h4 style="font-family: monospace;">// Home</h4>
 
                     </div>
                 </section>
                 <section class="mdl-layout__tab-panel" id="ma-add">
                     <div class="page-content">
-                        <h4>ma-add</h4>
+                        <h4 style="font-family: monospace;">// Add</h4>
 
                     </div>
                 </section>
                 <section class="mdl-layout__tab-panel" id="ma-stats">
                     <div class="page-content">
-                        <h4>ma-stats</h4>
+                        <h4 style="font-family: monospace;">// Stats</h4>
 
                     </div>
                 </section>
                 <section class="mdl-layout__tab-panel" id="ma-custom">
                     <div class="page-content">
-                        <h4>ma-custom</h4>
+                        <h4 style="font-family: monospace;">// Custom</h4>
 
                     </div>
                 </section>
