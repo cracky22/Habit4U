@@ -7,21 +7,25 @@ p, h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
 }
 
+.mdl-layout__tab {
+    font-size: 15.6px;
+}
+
 .mdl-layout__header, .mdl-layout__tab-bar {
     background-color: #28323e;
     color: #ffffff;
 }
 
 .mdl-layout__tab-ripple-container {
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .mdl-layout__tab.is-active::after {
     background: #1c87ab!important;
     border-radius: 4px!important;
-    width: 80%!important;
+    height: 3.8px!important;
+    width: 78%!important;
     left: 10%!important;
-    height: 3px!important;
 }
 
 .mdl-layout__drawer {
@@ -36,9 +40,10 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .mdl-button, .mdl-js-button {
     background-color: #187a9b!important;
-    color: #ffffff;
+    border-radius: 20px;
     font-weight: 550;
-    border-radius: 15px;
+    font-size: 14.7px;
+    color: #ffffff;
 }
 
 .mdl-button:hover, .mdl-js-button:hover {
