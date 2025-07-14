@@ -68,17 +68,24 @@
             <center>
                 <section class="mdl-layout__tab-panel" id="ma-add">
                     <div class="page-content">
-                        
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="habit4u.checkin();">
-                            checkin
-                        </button>
+                        <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h4>checkin.form</h4>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <div class="mdl-layout-spacer"></div>
+                            <a onclick="habit4u.checkin();" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                checkin
+                            </a>
+                        </div>
+                        </div>
                     </div>
                 </section>
                 <section class="mdl-layout__tab-panel is-active" id="ma-home">
                     <div class="page-content">
                         <div class="demo-card-event mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title mdl-card--expand">
-                            <h4>eventcard.data</h4>
+                            <h4>lastCheckin.data</h4>
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
                             <a onclick="change_section('ma-home', 'ma-custom');" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
@@ -88,8 +95,6 @@
                             <i onclick="change_section('ma-home', 'ma-stats');" class="material-icons">assessment</i>
                         </div>
                         </div>
-                        
-
                     </div>
                 </section>
                 <section class="mdl-layout__tab-panel" id="ma-stats">
