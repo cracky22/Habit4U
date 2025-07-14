@@ -53,6 +53,13 @@ function show_change(element) {
     }, 3000);
 }
 
+function show_tabbar() {
+    document.querySelector(".mdl-layout__tab-bar-container").style.display = "block";
+}
+function hide_tabbar() {
+    document.querySelector(".mdl-layout__tab-bar-container").style.display = "none";
+}
+
 // HapticFeedback class to handle vibration feedback
 class HapticFeedback {
     vibrate(vibrate_ms) {
