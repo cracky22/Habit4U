@@ -46,8 +46,13 @@ function change_section(from, to) {
 }
 
 function show_change(element) {
-    document.getElementById(element).classList.remove("autochange");
-    document.getElementById(element).classList.add("autochange");
+    show_tabbar();
+    // remove and add class to trigger animation
+    setTimeout(() => {
+        document.getElementById(element).classList.remove("autochange");
+        document.getElementById(element).classList.add("autochange");
+    }, 350);
+    // remove class after 3 seconds
     setTimeout(() => {
         document.getElementById(element).classList.remove("autochange");
     }, 3000);
