@@ -18,7 +18,7 @@
 
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-        <header class="mdl-layout__header">
+        <header class="mdl-layout__header" onclick="hapticFeedback.vibrate(15);">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title" id="masterTitle">Habit4u</span>
             </div>
@@ -36,7 +36,7 @@
             <center>
                 <section class="mdl-layout__tab-panel" id="ma-add">
                     <div class="page-content">
-                        <h6 style="font-family: monospace;">// Add</h6>
+                        <h6>// Add</h6>
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="habit4u.checkin();">
                             checkin
                         </button>
@@ -44,19 +44,19 @@
                 </section>
                 <section class="mdl-layout__tab-panel is-active" id="ma-home">
                     <div class="page-content">
-                        <h6 style="font-family: monospace;">// Home</h6>
+                        <h6>// Home</h6>
 
                     </div>
                 </section>
                 <section class="mdl-layout__tab-panel" id="ma-stats">
                     <div class="page-content">
-                        <h6 style="font-family: monospace;">// Stats</h6>
+                        <h6>// Stats</h6>
 
                     </div>
                 </section>
                 <section class="mdl-layout__tab-panel" id="ma-custom">
                     <div class="page-content">
-                        <h6 style="font-family: monospace;">// Custom</h6>
+                        <h6>// Custom</h6>
 
                     </div>
                 </section>
