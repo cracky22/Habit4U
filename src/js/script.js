@@ -30,7 +30,7 @@ class Habit4u {
             // tab
             document.getElementById("ma-add-tab").classList.remove("is-active");
             document.getElementById("ma-home-tab").classList.add("is-active");
-        }, 1000);
+        }, 800);
     }
 }
 

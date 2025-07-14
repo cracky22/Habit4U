@@ -33,3 +33,14 @@ p, h1, h2, h3, h4, h5, h6 {
     font-family: 'Rubik';
     font-weight: 550;
 }
+
+.mdl-button, .mdl-js-button {
+    background-color: #187a9b!important;
+    color: #ffffff;
+    font-weight: 550;
+    border-radius: 15px;
+}
+
+.mdl-button:hover, .mdl-js-button:hover {
+    background-color: rgb(17, 75, 96)!important;
+}
