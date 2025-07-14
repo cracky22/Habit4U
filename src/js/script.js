@@ -24,19 +24,26 @@ class Habit4u {
         hapticFeedback.vibrate(15);
         setTimeout(() => {
             console.log("Check-in completed");
-            // section
-            document.getElementById("ma-add").classList.remove("is-active");
-            document.getElementById("ma-home").classList.add("is-active");
-            // tab
-            document.getElementById("ma-add-tab").classList.remove("is-active");
-            document.getElementById("ma-home-tab").classList.add("is-active");
             // autochange
-            show_change("ma-home-tab");
+            change_section("ma-add", "ma-home");
         }, 800);
     }
 }
 
 const habit4u = new Habit4u();
+
+function change_section(from, to) {
+    // section
+    document.getElementById(from).classList.remove("is-active");
+    document.getElementById(to).classList.add("is-active");
+    // tab
+    const from_tab_id = from + "-tab";
+    const to_tab_id = to + "-tab";
+    document.getElementById(from_tab_id).classList.remove("is-active");
+    document.getElementById(to_tab_id).classList.add("is-active");
+    // autochange
+    show_change(to_tab_id);
+}
 
 function show_change(element) {
     document.getElementById(element).classList.remove("autochange");
