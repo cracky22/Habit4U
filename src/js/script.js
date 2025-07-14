@@ -1,3 +1,12 @@
+if (!storage.appConfig("get", "initialized") || storage.appData("get", "initialized") !== "true") {
+    storage.appConfig("set", "initialized", "true");
+    storage.appConfig("set", "version", "1.0.0");
+    console.log("App initialized for the first time.");
+} else {
+    console.log("App already initialized.");
+    storage.appConfig("set", "version", "1.0.0");
+}
+
 class Habit4u {
     loadData(for_which_tab) {
         if (for_which_tab === "ma-home") {
