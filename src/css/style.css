@@ -1,5 +1,32 @@
 body {
     font-family: 'Rubik';
+    background-color: #212a36;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+}
+
+.mdl-layout__header, .mdl-layout__tab-bar {
+    background-color: #28323e;
+    color: #ffffff;
+}
+
+.mdl-layout__tab-ripple-container {
+    border-radius: 10px;
+}
+
+.mdl-layout__tab.is-active::after {
+    background: #1c87ab!important;
+    border-radius: 4px!important;
+    width: 80%!important;
+    left: 10%!important;
+    height: 3px!important;
+}
+
+.mdl-layout__drawer {
+    background-color: #1e2731;
+    color: #ffffff;
 }
 
 .mdl-layout-title {
