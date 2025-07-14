@@ -18,6 +18,20 @@ class Habit4u {
 
         }
     }
+
+    checkin() {
+        console.log("Check-in action triggered");
+        hapticFeedback.vibrate(15);
+        setTimeout(() => {
+            console.log("Check-in completed");
+            // section
+            document.getElementById("ma-add").classList.remove("is-active");
+            document.getElementById("ma-home").classList.add("is-active");
+            // tab
+            document.getElementById("ma-add-tab").classList.remove("is-active");
+            document.getElementById("ma-home-tab").classList.add("is-active");
+        }, 1000);
+    }
 }
 
 const habit4u = new Habit4u();

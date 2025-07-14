@@ -23,8 +23,8 @@
                 <span class="mdl-layout-title" id="masterTitle">Habit4u</span>
             </div>
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-                <a onclick="habit4u.loadData('ma-home');" href="#ma-home" class="mdl-layout__tab is-active" id="ma-home-tab">Home</a>
                 <a onclick="habit4u.loadData('ma-add');" href="#ma-add" class="mdl-layout__tab" id="ma-add-tab">Add</a>
+                <a onclick="habit4u.loadData('ma-home');" href="#ma-home" class="mdl-layout__tab is-active" id="ma-home-tab">Home</a>
                 <a onclick="habit4u.loadData('ma-stats');" href="#ma-stats" class="mdl-layout__tab" id="ma-stats-tab">Stats</a>
                 <a onclick="habit4u.loadData('ma-custom');" href="#ma-custom" class="mdl-layout__tab" id="ma-custom-tab">Custom</a>
             </div>
@@ -34,15 +34,17 @@
         </div>
         <main class="mdl-layout__content">
             <center>
-                <section class="mdl-layout__tab-panel is-active" id="ma-home">
-                    <div class="page-content">
-                        <h6 style="font-family: monospace;">// Home</h6>
-
-                    </div>
-                </section>
                 <section class="mdl-layout__tab-panel" id="ma-add">
                     <div class="page-content">
                         <h6 style="font-family: monospace;">// Add</h6>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="habit4u.checkin();">
+                            checkin
+                        </button>
+                    </div>
+                </section>
+                <section class="mdl-layout__tab-panel is-active" id="ma-home">
+                    <div class="page-content">
+                        <h6 style="font-family: monospace;">// Home</h6>
 
                     </div>
                 </section>
