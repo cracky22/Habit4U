@@ -29,7 +29,6 @@ class Habit4u {
         }, 800);
     }
 }
-
 const habit4u = new Habit4u();
 
 function change_section(from, to) {
@@ -75,5 +74,4 @@ class HapticFeedback {
         }
     }
 }
-
 const hapticFeedback = new HapticFeedback();
