@@ -30,12 +30,21 @@ class Habit4u {
             // tab
             document.getElementById("ma-add-tab").classList.remove("is-active");
             document.getElementById("ma-home-tab").classList.add("is-active");
+            // autochange
+            show_change("ma-home-tab");
         }, 800);
     }
 }
 
 const habit4u = new Habit4u();
 
+function show_change(element) {
+    document.getElementById(element).classList.remove("autochange");
+    document.getElementById(element).classList.add("autochange");
+    setTimeout(() => {
+        document.getElementById(element).classList.remove("autochange");
+    }, 3000);
+}
 
 // HapticFeedback class to handle vibration feedback
 class HapticFeedback {

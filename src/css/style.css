@@ -22,6 +22,26 @@ p, h1, h2, h3, h4, h5, h6 {
     border-radius: 15px;
 }
 
+@keyframes autochange {
+  0% {
+    background-color: #176f8c;
+  }
+  50% {
+    background-color: rgba(73, 104, 114, 0.393)
+  }
+  75% {
+    background-color: #176f8c;
+  }
+  100% {
+    background: none;
+  }
+}
+
+.autochange {
+    border-radius: 12px;
+    animation: autochange 1.85s ease-out;
+}
+
 .mdl-layout__tab.is-active::after {
     background: #1c87ab!important;
     border-radius: 4px!important;
