@@ -11,32 +11,27 @@ class Habit4u {
     loadData(for_which_tab) {
         if (for_which_tab === "ma-home") {
             console.log("Loading Home Tab");
+            uiManager.renderHomeTab();
             hapticFeedback.vibrate(15);
 
         } else if (for_which_tab === "ma-add") {
             console.log("Loading Add Tab");
+            uiManager.renderAddTab();
             hapticFeedback.vibrate(15);
 
         } else if (for_which_tab === "ma-stats") {
             console.log("Loading Stats Tab");
+            uiManager.renderStatsTab();
             hapticFeedback.vibrate(15);
 
         } else if (for_which_tab === "ma-custom") {
             console.log("Loading Custom Tab");
+            uiManager.renderCustomTab();
             hapticFeedback.vibrate(15);
 
         }
     }
 
-    checkin() {
-        console.log("Check-in action triggered");
-        hapticFeedback.vibrate(15);
-        setTimeout(() => {
-            console.log("Check-in completed");
-            // autochange
-            change_section("ma-add", "ma-home");
-        }, 800);
-    }
 }
 const habit4u = new Habit4u();
 
