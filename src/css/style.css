@@ -92,3 +92,41 @@ p, h1, h2, h3, h4, h5, h6 {
 .mdl-textfield__label:after {
     background-color: #1c87ab !important;
 }
+
+/* Responsive card widths */
+@media (max-width: 480px) {
+    .demo-card-event.mdl-card {
+        width: 95% !important;
+    }
+}
+
+/* Quality star hover effects */
+.quality-star:hover {
+    color: #ffc107 !important;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+/* Habit type radio buttons */
+.habit-type-option input[type="radio"] {
+    accent-color: #1c87ab;
+}
+
+/* Better spacing for mobile */
+.page-content {
+    padding: 0 10px;
+}
+
+/* Improved button spacing */
+.mdl-card__actions {
+    padding: 16px !important;
+}
+
+/* Better text contrast */
+.mdl-textfield__input {
+    color: white !important;
+}
+
+.mdl-textfield__label {
+    color: rgba(255,255,255,0.7) !important;
+}

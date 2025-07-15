@@ -22,12 +22,15 @@ class HabitManager {
         storage.appData("set", "checkins", JSON.stringify(this.checkins));
     }
 
-    addHabit(name, description, color = "#2e3a87") {
+    addHabit(name, description, color = "#2e3a87", type = "daily", targetCount = 1, unit = "") {
         const habit = {
             id: Date.now().toString(),
             name: name,
             description: description,
             color: color,
+            type: type, // daily, multiple, weekly, quality
+            targetCount: targetCount,
+            unit: unit,
             createdAt: new Date().toISOString(),
             isActive: true
         };
@@ -52,21 +55,54 @@ class HabitManager {
         return this.habits.filter(habit => habit.isActive);
     }
 
-    checkinHabit(habitId) {
+    checkinHabit(habitId, value = 1, quality = null, note = "") {
         const today = new Date().toISOString().split('T')[0];
         if (!this.checkins[today]) {
             this.checkins[today] = {};
         }
-        this.checkins[today][habitId] = {
+        
+        const habit = this.habits.find(h => h.id === habitId);
+        if (!habit) return;
+
+        if (!this.checkins[today][habitId]) {
+            this.checkins[today][habitId] = {
+                entries: [],
+                totalValue: 0,
+                completed: false
+            };
+        }
+
+        const entry = {
             timestamp: new Date().toISOString(),
-            completed: true
+            value: value,
+            quality: quality,
+            note: note
         };
+
+        this.checkins[today][habitId].entries.push(entry);
+        this.checkins[today][habitId].totalValue += value;
+        
+        // Check if target is reached
+        if (habit.type === 'quality') {
+            this.checkins[today][habitId].completed = true;
+        } else {
+            this.checkins[today][habitId].completed = 
+                this.checkins[today][habitId].totalValue >= habit.targetCount;
+        }
+
         this.saveCheckins();
     }
 
-    isCheckedToday(habitId) {
+    getTodayCheckin(habitId) {
         const today = new Date().toISOString().split('T')[0];
-        return this.checkins[today] && this.checkins[today][habitId];
+        return this.checkins[today] && this.checkins[today][habitId] 
+            ? this.checkins[today][habitId] 
+            : null;
+    }
+
+    isCompletedToday(habitId) {
+        const checkin = this.getTodayCheckin(habitId);
+        return checkin ? checkin.completed : false;
     }
 
     getTodayProgress() {
@@ -74,7 +110,11 @@ class HabitManager {
         const activeHabits = this.getHabits();
         const todayCheckins = this.checkins[today] || {};
         
-        const completed = activeHabits.filter(habit => todayCheckins[habit.id]).length;
+        const completed = activeHabits.filter(habit => {
+            const checkin = todayCheckins[habit.id];
+            return checkin && checkin.completed;
+        }).length;
+        
         const total = activeHabits.length;
         
         return { completed, total, percentage: total > 0 ? Math.round((completed / total) * 100) : 0 };
@@ -91,7 +131,10 @@ class HabitManager {
             
             const dayCheckins = this.checkins[dateString] || {};
             const activeHabits = this.getHabits();
-            const completed = activeHabits.filter(habit => dayCheckins[habit.id]).length;
+            const completed = activeHabits.filter(habit => {
+                const checkin = dayCheckins[habit.id];
+                return checkin && checkin.completed;
+            }).length;
             
             stats.push({
                 date: dateString,
@@ -114,7 +157,8 @@ class HabitManager {
             date.setDate(today.getDate() - i);
             const dateString = date.toISOString().split('T')[0];
             
-            if (this.checkins[dateString] && this.checkins[dateString][habitId]) {
+            const checkin = this.checkins[dateString] && this.checkins[dateString][habitId];
+            if (checkin && checkin.completed) {
                 streak++;
             } else {
                 break;
@@ -122,6 +166,52 @@ class HabitManager {
         }
         
         return streak;
+    }
+
+    getDiaryEntries(days = 7) {
+        const entries = [];
+        const today = new Date();
+        
+        for (let i = 0; i < days; i++) {
+            const date = new Date(today);
+            date.setDate(today.getDate() - i);
+            const dateString = date.toISOString().split('T')[0];
+            
+            const dayCheckins = this.checkins[dateString] || {};
+            const dayEntries = [];
+            
+            Object.keys(dayCheckins).forEach(habitId => {
+                const habit = this.habits.find(h => h.id === habitId);
+                if (habit && dayCheckins[habitId].entries) {
+                    dayCheckins[habitId].entries.forEach(entry => {
+                        if (entry.note && entry.note.trim()) {
+                            dayEntries.push({
+                                habit: habit,
+                                entry: entry,
+                                time: new Date(entry.timestamp).toLocaleTimeString('de-DE', { 
+                                    hour: '2-digit', 
+                                    minute: '2-digit' 
+                                })
+                            });
+                        }
+                    });
+                }
+            });
+            
+            if (dayEntries.length > 0) {
+                entries.push({
+                    date: dateString,
+                    dateFormatted: date.toLocaleDateString('de-DE', { 
+                        weekday: 'long', 
+                        day: 'numeric', 
+                        month: 'long' 
+                    }),
+                    entries: dayEntries.sort((a, b) => new Date(b.entry.timestamp) - new Date(a.entry.timestamp))
+                });
+            }
+        }
+        
+        return entries;
     }
 }
 
